@@ -1,22 +1,18 @@
-import { Container, Row, Col, Image, Button } from 'react-bootstrap';
-import './ErrorPage.css'
-import { Navigate, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 const ErrorPage = () => {
-      const navigate = useNavigate()
-
       return (
-            <Container className="error-page">
-                  <Row className="justify-content-center align-items-center">
-                        <Col xs={12} sm={8} md={6} lg={4}>
-                              <h1>Oops!</h1>
-                              <p>Something went wrong.</p>
-                              
-                              <p>Please try again later.</p>
-                              <Button variant="primary"  onClick={()=>navigate(-1)}>Go Back</Button>
-                        </Col>
-                  </Row>
-            </Container>
+            <div className="flex flex-col items-center justify-center h-screen bg-gray-200">
+                
+                  <h1 className="text-2xl font-bold mb-2">Oops! Something went wrong.</h1>
+                  <p className="text-lg text-gray-600">We apologize for the inconvenience.</p>
+                  <Link to="/">
+                        <button className="btn btn-outline">Back to homepage</button>
+                  </Link>
+            </div>
       );
 };
-export default ErrorPage
+
+export default ErrorPage;

@@ -1,15 +1,8 @@
-.main-layout {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Adjust spacing for the content area */
-.main-layout>* {
-      margin-bottom: 20px;
-}
 
-a {
-      text-decoration: none;
-      color: black;
+.my-container{
+      @apply lg:w-[85%] md:w-[90%] w-[96%] mx-auto
 }

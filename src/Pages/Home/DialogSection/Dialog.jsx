@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Register = () => {
+const Dialog = () => {
       return (
             <div>
-                  Register
+                  
             </div>
       );
 };
 
-export default Register;
+export default Dialog;

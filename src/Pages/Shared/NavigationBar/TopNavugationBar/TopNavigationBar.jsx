@@ -1,75 +1,36 @@
-import React, { useContext, useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import logo from '../../../../assets/logo.png'
-import { AuthContext } from '../../../../Provider/AuthProvider';
-
+import { Link } from 'react-router-dom';
 const TopNavigationBar = () => {
-      const [isHovering, setIsHovering] = useState(false);
-      const { user, logOut } = useContext(AuthContext);
-      
-
-      const handleSignOut = () => {
-            logOut()
-
-      }
-
       return (
-            <div className=' container my-4'>
-                  <Navbar expand="lg">
-                        <Container fluid >
-                              <Navbar.Brand><Link><img src={logo} style={{ width: '50%' }} alt="" /></Link></Navbar.Brand>
-                              <Navbar.Toggle aria-controls="navbarScroll" />
-                              <Navbar.Collapse id="navbarScroll">
-                                    <Nav
-                                          className="me-auto my-2 my-lg-0"
-                                          style={{ maxHeight: '100px' }}
-                                          navbarScroll
-                                    >
-                                          <Form className="d-flex">
-                                                <Form.Control
-                                                      type="search"
-                                                      placeholder="Search"
-                                                      className="me-2"
-                                                      aria-label="Search"
-                                                />
-                                                <Button variant="info" >Search</Button>
-                                          </Form>
-                                    </Nav>
-
-                                    <div className=' d-flex gap-3 justify-content-center align-items-center'>
-                                          <Link>WishList</Link>
-                                          <Link>Cart</Link>
-                                          {
-                                                user ? <>
-                                                      <Button onClick={handleSignOut}>LogOut</Button>
-                                                      <div>
-                                                            <img
-                                                                  style={{ width: '60px' }}
-                                                                  src={user?.photoURL}
-                                                                  alt='photo'
-                                                                  onMouseEnter={() => setIsHovering(true)}
-                                                                  onMouseLeave={() => setIsHovering(false)}
-                                                            ></img>
-
-                                                            <h6 style={{ width: '120px', marginLeft: '-30px', fontSize: '8px', top: '70px', fontWeight: '700' }} className={`hover-display-name py-2 rounded px- position-absolute text-white ps-2 fs-6 bg-dark ${isHovering ? 'd-block' : 'd-none'}`}>
-                                                                  {user?.displayName}
-                                                            </h6>
-                                                      </div>
-                                                </>
-                                                      : <Link to='/login'>Login</Link>
-                                          }
-                                    </div>
-                              </Navbar.Collapse>
-                        </Container>
-                  </Navbar>
-
-
+            <div className="navbar flex-nowrap bg-base-100  h-28 border-b-2">
+                  <div className="navbar-start">
+                        <div className="dropdown">
+                              <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                              </label>
+                              <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                                    <li><Link to='/'>Home</Link></li>
+                                    <li><Link to='/all-toys'>All Toys</Link></li>
+                                    <li><Link to='/my-toys'>My Toys</Link></li>
+                                    <li><Link to='/add-toy'>Add Toys</Link></li>
+                                    <li><Link to='/blog'>Blogs</Link></li>
+                              </ul>
+                        </div>
+                        <Link to='/'><img className='w-[70%] ' src={logo} alt="" /></Link>
+                  </div>
+                  <div className="navbar-center hidden lg:flex">
+                        <ul className="menu menu-horizontal px-1">
+                              <li><Link to='/'>Home</Link></li>
+                              <li><Link to='/all-toys'>All Toys</Link></li>
+                              <li><Link to='/my-toys'>My Toys</Link></li>
+                              <li><Link to='/add-toy'>Add Toys</Link></li>
+                              <li><Link to='/blog'>Blogs</Link></li>
+                        </ul>
+                  </div>
+                  <div className="navbar-end">
+                        <Link to='/login'>Login</Link>
+                  </div>
             </div>
       );
 };

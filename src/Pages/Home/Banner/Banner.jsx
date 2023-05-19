@@ -1,40 +1,78 @@
 import React from 'react';
 
-import { useState } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
-import BannerItems from './BannerItems';
 import bg1 from '../../../assets/images/banner/bg1.jpg'
 const Banner = () => {
-      const [index, setIndex] = useState(0);
-
-      const handleSelect = (selectedIndex) => {
-            setIndex(selectedIndex);
-      };
-      const number = [
-            { _id: 1, slideName: 'First Slide', img: bg1, description: 'jkashf asdfbasdjh sdafbnasdf sdafnhjkas sdfhjask hasdjka hsdf aadf amkjhadsf ' },
-            { _id: 2, slideName: 'Second Slide', img: bg1, description: 'jkashf asdfbasdjh sdafbnasdf sdafnhjkas sdfhjask hasdjka hsdf aadf amkjhadsf ' },
-            { _id: 3, slideName: 'Third Slide', img: bg1, description: 'jkashf asdfbasdjh sdafbnasdf sdafnhjkas sdfhjask hasdjka hsdf aadf amkjhadsf ' }
-
-      ]
       return (
-            <Carousel  className=' container ' activeIndex={index} onSelect={handleSelect}>
-                  {
-                        number.map(n =>
-                              <Carousel.Item className='position-relative' key={n._id}>
-                                    <img
-                                          className="d-block w-100 rounded"
-                                          src={n.img}
-                                          alt={n.slideName}
-                                    />
-                                    <Carousel.Caption className='position-absolute top-50 start-0 translate-middle-y text-start bg-dark opacity-75 ps-5 '>
-                                          <div>
-                                                <h2>{n.slideName}</h2>
-                                                <p>{n.description}</p>
-                                          </div>
-                                    </Carousel.Caption>
-                              </Carousel.Item>)
-                  }
-            </Carousel>
+            <div className="carousel w-full h-[600px]">
+                  <div id="slide1" className="carousel-item relative w-full">
+                        <img src={bg1} className="w-full rounded-xl" />
+                        <div className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
+                              <div className='text-white space-y-7 pl-12 w-1/2'>
+                                    <h2 className='text-6xl font-bold'>Affordable Price For Car Servicing</h2>
+                                    <p>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
+                                    <div>
+                                          <button className="btn btn-primary mr-5">Discover More</button>
+                                          <button className="btn btn-outline btn-secondary">Latest Project</button>
+                                    </div>
+                              </div>
+                        </div>
+                        <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
+                              <a href="#slide4" className="btn btn-circle mr-5">❮</a>
+                              <a href="#slide2" className="btn btn-circle">❯</a>
+                        </div>
+                  </div>
+                  <div id="slide2" className="carousel-item relative w-full">
+                        <img src={bg1} className="w-full rounded-xl" />
+                        <div className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
+                              <div className='text-white space-y-7 pl-12 w-1/2'>
+                                    <h2 className='text-6xl font-bold'>TOy Price For Car Servicing</h2>
+                                    <p>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
+                                    <div>
+                                          <button className="btn btn-primary mr-5">Discover More</button>
+                                          <button className="btn btn-outline btn-secondary">Latest Project</button>
+                                    </div>
+                              </div>
+                        </div>
+                        <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
+                              <a href="#slide1" className="btn btn-circle mr-5">❮</a>
+                              <a href="#slide3" className="btn btn-circle">❯</a>
+                        </div>
+                  </div>
+                  <div id="slide3" className="carousel-item relative w-full">
+                        <img src={bg1} className="w-full rounded-xl" />
+                        <div className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
+                              <div className='text-white space-y-7 pl-12 w-1/2'>
+                                    <h2 className='text-6xl font-bold'>Boy Price For Car Servicing</h2>
+                                    <p>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
+                                    <div>
+                                          <button className="btn btn-primary mr-5">Discover More</button>
+                                          <button className="btn btn-outline btn-secondary">Latest Project</button>
+                                    </div>
+                              </div>
+                        </div>
+                        <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
+                              <a href="#slide2" className="btn btn-circle mr-5">❮</a>
+                              <a href="#slide4" className="btn btn-circle">❯</a>
+                        </div>
+                  </div>
+                  <div id="slide4" className="carousel-item relative w-full">
+                        <img src={bg1} className="w-full rounded-xl" />
+                        <div className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
+                              <div className='text-white space-y-7 pl-12 w-1/2'>
+                                    <h2 className='text-6xl font-bold'>Joy Price For Car Servicing</h2>
+                                    <p>There are many variations of passages of  available, but the majority have suffered alteration in some form</p>
+                                    <div>
+                                          <button className="btn btn-primary mr-5">Discover More</button>
+                                          <button className="btn btn-outline btn-secondary">Latest Project</button>
+                                    </div>
+                              </div>
+                        </div>
+                        <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
+                              <a href="#slide3" className="btn btn-circle mr-5">❮</a>
+                              <a href="#slide1" className="btn btn-circle">❯</a>
+                        </div>
+                  </div>
+            </div>
       );
 };
 
