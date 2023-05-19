@@ -1,14 +1,39 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../Provider/AuthProvider';
 const Login = () => {
       const [success ,setSuccess]=useState('')
       const [error,setError]=useState('')
+      const {signInEmail,googleSignIn}=useContext(AuthContext)
+      const navigate= useNavigate()
 
       const handleSubmit=event=>{
+            event.preventDefault();
 
+            setSuccess('')
+            setError('')
+
+            const form = event.target;
+            const email = form.email.value;
+            const password = form.password.value;
+           
+            signInEmail(email,password)
+            .then(result=>{
+                  const user= result.user;
+                  console.log(user);
+                  navigate('/')
+            }).catch(error=>setError(error.message))
+
+            
+
+      }
+      const handleGoogleSignIN =()=>{
+            googleSignIn()
+            .then(()=>{navigate('/')})
+            .catch(error=>setError(error.message))
       }
       return (
             <div className=' sm-w-90 md-w-70 lg-w-60 mx-auto border p-5 mt-3 mb-5 rounded'>
@@ -48,7 +73,7 @@ const Login = () => {
 
                   </Form>
                   <div className=' d-flex flex-column justify-content-center align-items-center gap-2'>
-                        <Button  className='d-flex justify-content-center align-items-center gap-2 bg-white' variant="light">
+                        <Button onClick={handleGoogleSignIN} className='d-flex justify-content-center align-items-center gap-2 bg-white' variant="light">
                               <FcGoogle size={25} />
                               <span>Sign In With Google</span>
 
