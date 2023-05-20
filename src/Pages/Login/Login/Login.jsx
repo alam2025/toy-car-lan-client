@@ -1,19 +1,38 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { FcGoogle } from "react-icons/fc";
+import { AuthContext } from '../../../Provider/AuthProvider';
 const Login = () => {
-      const [email, setEmail] = useState('');
-      const [password, setPassword] = useState('');
+      const { signInEmail,googleSignIn} = useContext(AuthContext)
+      const navigate= useNavigate()
+
 
       const handleSubmit = (e) => {
             e.preventDefault();
-            // Perform login logic here
+            const form = e.target;
+
+            const email = form.email.value;
+            const password = form.password.value;
+
+            signInEmail(email,password)
+            .then(result=>{
+                  console.log(result.user);
+                  navigate('/')
+
+            }).catch(error=>console.log(error.message))
       };
+
+      const handleGoogleLogin=()=>{
+            googleSignIn()
+            .then(()=>{})
+            .catch(error=>console.log(error.message))
+
+      }
 
       return (
             <div className="flex flex-col items-center border w-full md:w-3/4 lg:w-1/2 rounded bg-gray-200 py-8  justify-center my-10 mx-auto">
                   <h3 className='text-center text-3xl font-bold pt-4'>Please Login</h3>
-                  <form className=" px-8 py-8 ">
+                  <form onSubmit={handleSubmit} className=" px-8 py-8 ">
 
                         <div className="mb-4">
                               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
@@ -24,8 +43,7 @@ const Login = () => {
                                     id="email"
                                     type="email"
                                     placeholder="Enter your email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
+                                    name='email'
                               />
                         </div>
                         <div className="mb-4">
@@ -37,8 +55,7 @@ const Login = () => {
                                     id="password"
                                     type="password"
                                     placeholder="Enter your password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    name='password'
                               />
                         </div>
                         <div className="flex items-center justify-center">
@@ -52,9 +69,12 @@ const Login = () => {
                   </form>
 
                   <div>
-                       <div>
-                        
-                       </div>
+                        <div className='text-center'>
+
+                              <button onClick={handleGoogleLogin} className="btn btn-circle btn-outline">
+                                    <FcGoogle size={50} />
+                              </button>
+                        </div>
                         <p>Don't Have an Account ? Please <Link className='text-success font-bold' to='/register'>Register</Link></p>
                   </div>
             </div>

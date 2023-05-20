@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import logo from '../../../../assets/logo.png'
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../../Provider/AuthProvider';
 const TopNavigationBar = () => {
+      const { user,logOut } = useContext(AuthContext)
+      const [isHovering, setIsHovering] = useState(false)
+      const handleLogout=()=>{
+            logOut()
+            .then(()=>{})
+            .catch(error=>console.log(error.message))
+      }
+
       return (
-            <div className="navbar flex-nowrap bg-base-100  h-28 border-b-2">
+            <div className="navbar flex-nowrap bg-base-100  h-28 border-b-2 mb-12">
                   <div className="navbar-start">
                         <div className="dropdown">
                               <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -29,7 +38,24 @@ const TopNavigationBar = () => {
                         </ul>
                   </div>
                   <div className="navbar-end">
-                        <Link to='/login'>Login</Link>
+                        {
+                              user ? <>
+                              <button onClick={handleLogout}  className='btn btn-outline me-4 btn-sm'>Logout</button>
+                              <div className=' relative'>
+                                    {
+                                          user?.photoURL ? <img
+                                                className='w-[60px] h-[60px] rounded-full bg-slate-200 p-2 stroke-slate-50'
+                                                src={user.photoURL}
+                                                onMouseEnter={() => setIsHovering(true)}
+                                                onMouseLeave={() => setIsHovering(false)}
+                                          ></img> : ''
+                                    }
+                                    <h6
+                                          className={` absolute bg-black text-white py-2 px-4 rounded-md ${isHovering ? 'block' : 'hidden'}`}>{user?.displayName}</h6>
+                              </div>
+                              </>
+                                    : <Link to='/login'>Login</Link>
+                        }
                   </div>
             </div>
       );
