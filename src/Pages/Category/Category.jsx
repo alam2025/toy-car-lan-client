@@ -9,7 +9,7 @@ const Category = () => {
       console.log(subCategoriesData);
 
       useEffect(() => {
-            fetch(`http://localhost:3000/category-toys?subCategory=${name}`)
+            fetch(`http://localhost:3000/category-toys?subCategory=${name || 'Standard Sports Car'}`)
                   .then(res => res.json())
                   .then(data => setSubcategoriesData(data))
       }, [name])
@@ -20,9 +20,11 @@ const Category = () => {
                         <ShopByCategory />
 
                   </div>
-                  <div>
+                  <div className=' grid grid-cols-1 lg:grid-cols-2 gap-4'>
                         {
                               subCategoriesData.map(data=><CategoryCard
+                              key={data._id}
+                              cars ={data}
                               />)
                         }
                   </div>
