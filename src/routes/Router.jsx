@@ -31,7 +31,8 @@ const router= createBrowserRouter([
                   },
                   {
                         path:'all-toys',
-                        element: <AllToys/>
+                        element: <AllToys/>,
+                        loader:()=>fetch('https://toy-car-land-server.vercel.app/toys')
                   }
             ]
       }
