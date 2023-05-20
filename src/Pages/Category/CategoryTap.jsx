@@ -9,7 +9,7 @@ const ShopByCategory = () => {
 
 
       useEffect(() => {
-            fetch('https://toy-car-land-server.vercel.app/categories')
+            fetch('http://localhost:3000/categories')
                   .then(res => res.json())
                   .then(data => setCategories(data))
       }, [])

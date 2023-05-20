@@ -6,6 +6,7 @@ import Login from "../Pages/Login/Login/Login";
 import Register from "../Pages/Login/Register/Register";
 import Category from "../Pages/Category/Category";
 import AllToys from "../Pages/ALLToys/AllToys";
+import ToyDetails from "../Pages/ToyDetails/ToyDetails";
 
 const router= createBrowserRouter([
       {
@@ -32,7 +33,12 @@ const router= createBrowserRouter([
                   {
                         path:'all-toys',
                         element: <AllToys/>,
-                        loader:()=>fetch('https://toy-car-land-server.vercel.app/toys')
+                        loader:()=>fetch('http://localhost:3000/toys')
+                  },
+                  {
+                        path:'toy-details/:id',
+                        element:<ToyDetails/>,
+                        loader : ({params})=>fetch(`http://localhost:3000/toy/${params.id}`)
                   }
             ]
       }

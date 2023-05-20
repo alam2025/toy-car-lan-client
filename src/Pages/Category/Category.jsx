@@ -9,7 +9,7 @@ const Category = () => {
       console.log(name);
 
       useEffect(() => {
-            fetch(`https://toy-car-land-server.vercel.app/category-toys?subCategory=${name || 'Standard Sports Car'}`)
+            fetch(`http://localhost:3000/category-toys?subCategory=${name || 'Standard Sports Car'}`)
                   .then(res => res.json())
                   .then(data => setSubcategoriesData(data))
       }, [name])

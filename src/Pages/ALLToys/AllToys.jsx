@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SubBanner from '../Shared/SubBanner';
 import { Link, useLoaderData } from 'react-router-dom';
+import ToyDetails from '../ToyDetails/ToyDetails';
 
 
 const AllToys = () => {
@@ -23,7 +24,7 @@ const AllToys = () => {
             // if (filteredToys) {
             //       setToys(filteredToys)
             // }
-           
+
       };
 
 
@@ -64,7 +65,13 @@ const AllToys = () => {
                                                 <td>${toy.price}</td>
                                                 <td>{toy.availableQuantity}</td>
                                                 <td>
-                                                      <Link><button className=' text-amber-700 hover:text-cyan-500'>View Details</button></Link>
+
+                                                     
+
+                                                      {/* modal  */}
+                                                      <label htmlFor="my-modal-5" className="btn btn-outline">View Details</label>
+                                                      <ToyDetails key={toy._id} cars={toy}/>
+                                                      {/* modal  */}
                                                 </td>
                                           </tr>)
                                     }
@@ -74,6 +81,8 @@ const AllToys = () => {
                               </tbody>
                         </table>
                   </div>
+                  {/* modal  */}
+
             </div>
       );
 };

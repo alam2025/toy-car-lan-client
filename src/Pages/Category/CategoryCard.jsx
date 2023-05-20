@@ -1,4 +1,5 @@
 import React from 'react';
+import ToyDetails from '../ToyDetails/ToyDetails';
 
 const CategoryCard = ({ cars }) => {
       const { pictureUrl, toyName, price, rating } = cars;
@@ -11,9 +12,17 @@ const CategoryCard = ({ cars }) => {
                               <p>Price: $ {price}</p>
                               <p>Rating: {rating}</p>
                         </div>
-                        
+
                   </div>
-                  <button className=" btn btn-warning mt-auto">Show More</button>
+                  {/* <button className=" btn btn-warning mt-auto">View Details</button> */}
+                  {/* modal  */}
+                  <div>
+                        <label htmlFor="my-modal-5" className="btn btn-outline">View Details</label>
+
+                        <ToyDetails cars={cars} key={cars._id}/>
+                       
+                  </div>
+                  {/* modal  */}
             </div>
       );
 };
