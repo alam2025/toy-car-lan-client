@@ -6,7 +6,7 @@ import Footer from '../../Pages/Shared/Footer/Footer';
 
 const MainLayout = () => {
       return (
-            <div className='my-container '>
+            <div className='my-container flex flex-col min-h-screen '>
                   <TopNavigationBar /> 
                   <Outlet />
                   <Footer />

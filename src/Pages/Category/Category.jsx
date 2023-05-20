@@ -6,10 +6,10 @@ import CategoryCard from './CategoryCard';
 const Category = () => {
       const [subCategoriesData, setSubcategoriesData]=useState([])
       const { name } = useParams()
-      console.log(subCategoriesData);
+      console.log(name);
 
       useEffect(() => {
-            fetch(`http://localhost:3000/category-toys?subCategory=${name || 'Standard Sports Car'}`)
+            fetch(`https://toy-car-land-server.vercel.app/category-toys?subCategory=${name || 'Standard Sports Car'}`)
                   .then(res => res.json())
                   .then(data => setSubcategoriesData(data))
       }, [name])
