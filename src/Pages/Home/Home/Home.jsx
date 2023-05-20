@@ -9,12 +9,16 @@ import Category from '../../Category/Category';
 const Home = () => {
       return (
             <div>
-                  <Banner/>
-                  <Dialog/>
-                  <Gallery/>
-                  <Category/>
-                  
-                 
+                  <Banner />
+                  <Dialog />
+                  <Gallery />
+
+                  <Category />
+
+
+
+
+
             </div>
       );
 };
