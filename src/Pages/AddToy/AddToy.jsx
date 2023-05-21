@@ -14,7 +14,6 @@ const AddToy = () => {
 
 
 
-
             const toyName = form.carname.value;
             const carBrand = form.carBrand.value;
             const pictureUrl = form.photourl.value;

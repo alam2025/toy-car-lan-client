@@ -60,7 +60,7 @@ const MyToys = () => {
                                                       <Link className="btn btn-outline" to={`/toy-details/${myCar._id}`}> View Details</Link>
                                                 </td>
                                                 <td>
-                                                      <Link to={`/updateCar`}>Edit</Link>
+                                                      <Link to={`/updateCar/${myCar._id}`}>Edit</Link>
                                                 </td>
                                                 <td>
                                                       <Link>X</Link>
