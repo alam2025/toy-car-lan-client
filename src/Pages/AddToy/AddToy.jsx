@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Toaster, toast, useToaster } from 'react-hot-toast';
 import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const AddToy = () => {
       const toaster = useToaster();
@@ -39,7 +40,11 @@ const AddToy = () => {
                   .then(data => {
                         if (data.insertedId) {
 
-                              toast.success('Successfully a New Car Added !!!', { duration: 2000 });
+                              Swal.fire(
+                                    'Inserted!',
+                                    'Your file has been Inserted!.',
+                                    'success'
+                              )
                               form.reset()
 
 

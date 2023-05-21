@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import { Toaster, toast, useToaster } from 'react-hot-toast';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdateCar = () => {
       const toaster = useToaster();
       const { user } = useContext(AuthContext)
-      const myCar= useLoaderData()
-      const {_id,toyName,carBrand,pictureUrl,sellerName,sellerEmail,subCategory,price,rating,availableQuantity,description}=myCar
+      const myCar = useLoaderData()
+      const { _id, toyName, carBrand, pictureUrl, sellerName, sellerEmail, subCategory, price, rating, availableQuantity, description } = myCar
 
 
       const handleSubmit = (e) => {
@@ -28,18 +29,40 @@ const UpdateCar = () => {
 
             // console.log(toyName, carBrand, pictureUrl, sellerEmail, sellerName, subCategory, price, rating, availableQuantity, description);
             const newCar = { toyName, carBrand, pictureUrl, sellerEmail, sellerName, subCategory, price, rating, availableQuantity, description };
-            
-            fetch(`http://localhost:3000/toy/${_id}`,{
-                  method:'PUT',
-                  headers:{
-                        'content-type':'application/json'
-                  },
-                  body:JSON.stringify(newCar)
+
+
+            Swal.fire({
+                  title: 'Are you sure?',
+                  text: "You won't be able to revert this!",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Yes, Update it!'
+            }).then((result) => {
+                  if (result.isConfirmed) {
+                        fetch(`http://localhost:3000/toy/${_id}`, {
+                              method: 'PUT',
+                              headers: {
+                                    'content-type': 'application/json'
+                              },
+                              body: JSON.stringify(newCar)
+                        })
+                              .then(res => res.json())
+                              .then(data => {
+                                    if (data.modifiedCount) {
+                                          Swal.fire(
+                                                'Updated!',
+                                                'Your file has been Updated.',
+                                                'success'
+                                          )
+                                    }
+                              })
+                       
+                  }
             })
-            .then(res=>res.json())
-            .then(data=>{
-                  console.log(data);
-            })
+
+
 
 
 
@@ -129,13 +152,13 @@ const UpdateCar = () => {
                                           <label className="label">
                                                 <span className="label-text text-xl font-semibold">Available quantity</span>
                                           </label>
-                                          <input type="text" placeholder="quantity" className="input input-bordered" required name='quantity' defaultValue={availableQuantity}/>
+                                          <input type="text" placeholder="quantity" className="input input-bordered" required name='quantity' defaultValue={availableQuantity} />
                                     </div>
                                     <div className="form-control border-0">
                                           <label className="label">
                                                 <span className="label-text text-xl font-semibold">Description</span>
                                           </label>
-                                          <textarea placeholder='Enter the Car description'defaultValue={description} className=" border p-4 rounded-md" name="decription" id="" cols="30" rows="4"></textarea>
+                                          <textarea placeholder='Enter the Car description' defaultValue={description} className=" border p-4 rounded-md" name="decription" id="" cols="30" rows="4"></textarea>
                                     </div>
 
                                     <div className="form-control mt-6 border-0 pb-8">
