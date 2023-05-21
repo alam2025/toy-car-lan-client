@@ -3,12 +3,19 @@ import logo from '../../../../assets/logo.png'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../Provider/AuthProvider';
 const TopNavigationBar = () => {
-      const { user,logOut } = useContext(AuthContext)
+      const { user, logOut, loading } = useContext(AuthContext)
       const [isHovering, setIsHovering] = useState(false)
-      const handleLogout=()=>{
+
+      if (loading) {
+            return <div className=' flex flex-col justify-center items-center'>
+                  <progress className="progress w-56"></progress>
+                  
+            </div>
+      }
+      const handleLogout = () => {
             logOut()
-            .then(()=>{})
-            .catch(error=>console.log(error.message))
+                  .then(() => { })
+                  .catch(error => console.log(error.message))
       }
 
       return (
@@ -20,9 +27,13 @@ const TopNavigationBar = () => {
                               </label>
                               <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                                     <li><Link to='/'>Home</Link></li>
-                                    <li><Link to='/all-toys'>All Toys</Link></li>
-                                    <li><Link to='/my-toys'>My Toys</Link></li>
-                                    <li><Link to='/add-toy'>Add Toys</Link></li>
+                                    <li><Link to='/all-toys'>All Cars</Link></li>
+                                    {
+                                          user && <>
+                                                <li><Link to='/my-toys'>My Cars</Link></li>
+                                                <li><Link to='/add-toy'>Add Cars</Link></li>
+                                          </>
+                                    }
                                     <li><Link to='/blog'>Blogs</Link></li>
                               </ul>
                         </div>
@@ -31,28 +42,32 @@ const TopNavigationBar = () => {
                   <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
                               <li><Link to='/'>Home</Link></li>
-                              <li><Link to='/all-toys'>All Toys</Link></li>
-                              <li><Link to='/my-toys'>My Toys</Link></li>
-                              <li><Link to='/add-toy'>Add Toys</Link></li>
+                              <li><Link to='/all-toys'>All Cars</Link></li>
+                              {
+                                    user && <>
+                                          <li><Link to='/my-toys'>My Cars</Link></li>
+                                          <li><Link to='/add-toy'>Add Cars</Link></li>
+                                    </>
+                              }
                               <li><Link to='/blog'>Blogs</Link></li>
                         </ul>
                   </div>
                   <div className="navbar-end">
                         {
                               user ? <>
-                              <button onClick={handleLogout}  className='btn btn-outline me-4 btn-sm'>Logout</button>
-                              <div className=' relative'>
-                                    {
-                                          user?.photoURL ? <img
-                                                className='w-[60px] h-[60px] rounded-full bg-slate-200 p-2 stroke-slate-50'
-                                                src={user.photoURL}
-                                                onMouseEnter={() => setIsHovering(true)}
-                                                onMouseLeave={() => setIsHovering(false)}
-                                          ></img> : ''
-                                    }
-                                    <h6
-                                          className={` absolute bg-black text-white py-2 px-4 rounded-md ${isHovering ? 'block' : 'hidden'}`}>{user?.displayName}</h6>
-                              </div>
+                                    <button onClick={handleLogout} className='btn btn-outline me-4 btn-sm'>Logout</button>
+                                    <div className=' relative'>
+                                          {
+                                                user?.photoURL ? <img
+                                                      className='w-[60px] h-[60px] rounded-full bg-slate-200 p-2 stroke-slate-50'
+                                                      src={user.photoURL}
+                                                      onMouseEnter={() => setIsHovering(true)}
+                                                      onMouseLeave={() => setIsHovering(false)}
+                                                ></img> : ''
+                                          }
+                                          <h6
+                                                className={` absolute bg-black text-white py-2 px-4 rounded-md ${isHovering ? 'block' : 'hidden'}`}>{user?.displayName}</h6>
+                                    </div>
                               </>
                                     : <Link to='/login'>Login</Link>
                         }

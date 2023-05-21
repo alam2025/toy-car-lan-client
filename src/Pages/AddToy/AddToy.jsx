@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Toaster, toast, useToaster } from 'react-hot-toast';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const AddToy = () => {
       const toaster = useToaster();
+      const {user}=useContext(AuthContext)
 
 
       const handleSubmit = (e) => {
@@ -84,33 +86,15 @@ const AddToy = () => {
                                           <label className="label">
                                                 <span className="label-text text-xl font-semibold">Seller Name</span>
                                           </label>
-                                          <input type="text" placeholder="Enter Seller name" className="input input-bordered" required name='seller' />
+                                          <input type="text" placeholder="Enter Seller name" className="input input-bordered" required name='seller' defaultValue={user.displayName} readOnly />
                                     </div>
                                     <div className="form-control border-0">
                                           <label className="label">
                                                 <span className="label-text text-xl font-semibold">Seller Email</span>
                                           </label>
-                                          <input type="email" placeholder="Enter Seller email" className="input input-bordered" required name='email' />
+                                          <input type="email" placeholder="Enter Seller email" className="input input-bordered" required name='email' defaultValue={user.email} readOnly />
                                     </div>
-                                    {/* <div className="form-control border-0">
-                                          <label className="label">
-                                                <span className="label-text text-xl font-semibold">Sub-Category</span>
-                                          </label>
-                                          <input type="text" placeholder="Enter Seller email" className="input input-bordered" required name='subCategory' />
-                                    </div> */}
-                                    {/* <div className="form-control w-full border-0 ">
-                                          <label className="label">
-                                                <span className="label-text text-xl font-semibold">Sub Category</span>
-                                          </label>
-                                          <select className="select select-bordered" name='subCategory' required>
-                                                <option>Star Wars</option>
-                                                <option>Harry Potter</option>
-                                                <option>Lord of the Rings</option>
-                                                <option>Planet of the Apes</option>
-                                                <option>Star Trek</option>
-                                          </select>
-                                          
-                                    </div> */}
+                                   
 
                                     <div className="form-control w-full border-0">
                                           <label className="label">

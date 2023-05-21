@@ -1,10 +1,16 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../../../Provider/AuthProvider';
 const Login = () => {
       const { signInEmail,googleSignIn} = useContext(AuthContext)
       const navigate= useNavigate()
+
+      const location = useLocation();
+      
+      // console.log(location);
+      const from = location.state?.from?.pathname || '/';
+      // console.log(from);
 
 
       const handleSubmit = (e) => {
@@ -17,14 +23,14 @@ const Login = () => {
             signInEmail(email,password)
             .then(result=>{
                   console.log(result.user);
-                  navigate('/')
+                  navigate(from,{replace:true})
 
             }).catch(error=>console.log(error.message))
       };
 
       const handleGoogleLogin=()=>{
             googleSignIn()
-            .then(()=>{})
+            .then(()=>{  navigate(from,{replace:true})})
             .catch(error=>console.log(error.message))
 
       }

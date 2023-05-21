@@ -78,7 +78,7 @@ const AllToys = () => {
                               </tbody>
                         </table>
                   </div>
-                  {/* modal  */}
+                  
 
             </div>
       );
