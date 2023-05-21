@@ -1,8 +1,11 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
-import Dialog from '../DialogSection/Dialog';
+
 import Gallery from '../Gallery/Gallery';
 import Category from '../../Category/Category';
+import Dialog from '../../Dialog/Dialog';
+import Sellers from '../../Sellers/Sellers';
+
 
 
 
@@ -11,9 +14,13 @@ const Home = () => {
             <div>
                   <Banner />
                   <Dialog />
-                  <Gallery />
+                  
 
                   <Category />
+                  <Gallery />
+                  <Sellers/>
+
+                 
 
 
 

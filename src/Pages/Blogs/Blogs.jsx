@@ -3,18 +3,21 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SubBanner from '../Shared/SubBanner';
+import Spinner from '../Shared/Spinner/Spinner';
 
 const Blog = () => {
       const [blogs, setBlogs] = useState([]);
+      const [isLoading, setLoading]= useState(true)
 
       useEffect(() => {
             // Fetch blog data from an API endpoint or a JSON file
             // Update the 'blogs' state with the fetched data
             const fetchBlogs = async () => {
                   try {
-                        const response = await fetch('http://localhost:3000/blogs');
+                        const response = await fetch('https://toy-car-land-server.vercel.app/blogs');
                         const data = await response.json();
                         setBlogs(data);
+                        setLoading(false)
                   } catch (error) {
                         console.error('Error fetching blogs:', error);
                   }
@@ -26,6 +29,9 @@ const Blog = () => {
       return (
             <div className="container mx-auto">
                   <SubBanner />
+                  {
+                        isLoading&&<Spinner/>
+                  }
 
 
                   <div className=' my-8'>
