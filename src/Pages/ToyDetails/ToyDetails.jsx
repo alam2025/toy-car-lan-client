@@ -1,15 +1,17 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import SubBanner from '../Shared/SubBanner';
+import Rating from 'react-rating';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 const ToyDetails = () => {
-      const cars= useLoaderData()
-     
-      const {pictureUrl,description,sellerEmail,price,rating,sellerName,toyName,availableQuantity}=cars;
-      
+      const cars = useLoaderData()
+
+      const { pictureUrl, description, sellerEmail, price, rating, sellerName, toyName, availableQuantity } = cars;
+
       return (
             <div>
-                  <SubBanner/>
+                  <SubBanner />
 
                   <div className='flex justify-center items-center gap-4 md:flex-row flex-col border my-8 py-10 px-8 shadow-md rounded-md'>
                         <img src={pictureUrl} alt={toyName} />
@@ -28,10 +30,19 @@ const ToyDetails = () => {
 
                                     <p><span className=' text-xl font-semibold'>Available Quantity : </span> {availableQuantity}</p>
                                     <p><span className=' text-xl font-semibold'>Price : </span>$ {price}</p>
-                                    <p><span className=' text-xl font-semibold'>Rating : </span> {rating}</p>
+                                    <div className=' flex gap-2 items-center'>
+                                          <Rating
+                                                placeholderRating={rating}
+                                                readonly
+                                                emptySymbol={<AiOutlineStar size={30} />}
+                                                placeholderSymbol={<AiFillStar size={30} className=' text-warning' />}
+                                                fullSymbol={<AiFillStar size={30} />}
+                                          /><span className='text-2xl font-bold'>{rating}</span>
+                                    </div>
+                                    
                               </div>
                         </div>
-                       
+
                   </div>
             </div>
       );

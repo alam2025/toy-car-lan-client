@@ -13,14 +13,16 @@ const CategoryCard = ({ cars }) => {
                         <h3 className="text-xl font-bold my-4">{toyName}</h3>
                         <div className="flex flex-col mb-4 flex-grow">
                               <p>Price: $ {price}</p>
-                              <p>Rating: {rating}</p>
+                              
+                              <div className=' flex gap-2 items-center'>
                               <Rating
                                     placeholderRating={rating}
                                     readonly
                                     emptySymbol={<AiOutlineStar size={30}/>}
                                     placeholderSymbol={<AiFillStar size={30} className=' text-warning'/>}
-                                    fullSymbol={<AiFillStar size={30}/>}
-                              />
+                                    fullSymbol={<AiFillStar size={30}/>} 
+                              /><span className='text-2xl font-bold'>{rating}</span>
+                              </div>
                         </div>
 
                   </div>

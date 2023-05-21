@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from '../../../Provider/AuthProvider';
 const Login = () => {
+      const [error,setError]=useState('')
       const { signInEmail,googleSignIn} = useContext(AuthContext)
       const navigate= useNavigate()
 
@@ -16,28 +17,32 @@ const Login = () => {
       const handleSubmit = (e) => {
             e.preventDefault();
             const form = e.target;
+            setError('')
 
             const email = form.email.value;
             const password = form.password.value;
 
             signInEmail(email,password)
             .then(result=>{
-                  console.log(result.user);
+                  
                   navigate(from,{replace:true})
 
-            }).catch(error=>console.log(error.message))
+            }).catch(error=>setError(error.message))
       };
 
       const handleGoogleLogin=()=>{
             googleSignIn()
             .then(()=>{  navigate(from,{replace:true})})
-            .catch(error=>console.log(error.message))
+            .catch(error=>setError(error.message))
 
       }
 
       return (
             <div className="flex flex-col items-center border w-full md:w-3/4 lg:w-1/2 rounded bg-gray-200 py-8  justify-center my-10 mx-auto">
                   <h3 className='text-center text-3xl font-bold pt-4'>Please Login</h3>
+                  {
+                        error&&<p className=' text-danger'>{error}</p>
+                  }
                   <form onSubmit={handleSubmit} className=" px-8 py-8 ">
 
                         <div className="mb-4">
