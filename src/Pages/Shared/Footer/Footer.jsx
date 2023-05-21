@@ -21,7 +21,7 @@ const Footer = () => {
                               <span className="footer-title">Contact</span>
                               <p>Email : toyland@gamil.com</p>
                               <p>Phone : 019XXXXXXX</p>
-                              <p>Facebook : /alam.98.bd</p>
+                              <p>Address : House 12, 05 Road Mymensign</p>
                         </div>
                         <div>
                               <span className="footer-title">Legal</span>
