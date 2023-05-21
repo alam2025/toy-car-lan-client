@@ -33,7 +33,7 @@ const MyToys = () => {
                   confirmButtonText: 'Yes, Delete it!'
             }).then((result) => {
                   if (result.isConfirmed) {
-                        fetch(`http://localhost:3000/toy/${id}`, {
+                        fetch(`https://toy-car-land-server.vercel.app/toy/${id}`, {
                               method: 'DELETE'
                         })
                               .then(res => res.json())

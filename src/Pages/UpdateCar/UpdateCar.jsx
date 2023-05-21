@@ -52,7 +52,7 @@ const UpdateCar = () => {
                         })
                               .then(res => res.json())
                               .then(data => {
-                                    if (data.modifiedCount) {
+                                    if (data.modifiedCount > 0) {
                                           Swal.fire(
                                                 'Updated!',
                                                 'Your file has been Updated.',
@@ -87,20 +87,20 @@ const UpdateCar = () => {
                                                 <label className="label">
                                                       <span className="label-text text-xl font-semibold">Car Name</span>
                                                 </label>
-                                                <input type="text" placeholder="Enter Car name" className="input input-bordered" name='carname' required defaultValue={toyName} />
+                                                <input type="text" placeholder="Enter Car name" className="input input-bordered" name='carname' required defaultValue={toyName} readOnly />
                                           </div>
                                           <div className="form-control border-0">
                                                 <label className="label">
                                                       <span className="label-text text-xl font-semibold">Car Brand
                                                       </span>
                                                 </label>
-                                                <input type="text" placeholder="Enter car Brand" className="input input-bordered" name='carBrand' defaultValue={carBrand} required />
+                                                <input type="text" placeholder="Enter car Brand" className="input input-bordered" name='carBrand' defaultValue={carBrand} required readOnly />
                                           </div>
                                           <div className="form-control border-0">
                                                 <label className="label">
                                                       <span className="label-text text-xl font-semibold">Car PhotoUrl</span>
                                                 </label>
-                                                <input type="text" placeholder="PhotoUrl" className="input input-bordered" name='photourl' defaultValue={pictureUrl} required />
+                                                <input type="text" placeholder="PhotoUrl" className="input input-bordered" name='photourl' defaultValue={pictureUrl} required readOnly/>
                                           </div>
                                           <div className="form-control border-0">
                                                 <label className="label">
@@ -120,7 +120,7 @@ const UpdateCar = () => {
                                                 <label className="label">
                                                       <span className="label-text text-xl font-semibold" defaultValue={subCategory}>Sub Category</span>
                                                 </label>
-                                                <select className="select select-bordered" name='subCategory' required>
+                                                <select className="select select-bordered" name='subCategory' required readOnly>
                                                       <optgroup label="Sports Car">
                                                             <option>Standard Sports Car</option>
                                                             <option>Supercar</option>
@@ -150,7 +150,7 @@ const UpdateCar = () => {
                                                 <label className="label">
                                                       <span className="label-text text-xl font-semibold">Rating</span>
                                                 </label>
-                                                <input type="text" placeholder="Rating" className="input input-bordered" required name='rating' defaultValue={rating} />
+                                                <input type="text" placeholder="Rating" className="input input-bordered" required name='rating' defaultValue={rating} readOnly/>
                                           </div>
                                           <div className="form-control border-0">
                                                 <label className="label">
