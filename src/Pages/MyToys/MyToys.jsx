@@ -2,20 +2,28 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { Link } from 'react-router-dom';
 import SubBanner from '../Shared/SubBanner';
+import Spinner from '../Shared/Spinner/Spinner';
 
 const MyToys = () => {
       const [myCars, setMyCars] = useState([])
       const { user } = useContext(AuthContext)
+      const [isLoading,setLoading]=useState(true)
 
       useEffect(() => {
-            fetch(`http://localhost:3000/myToys?email=${user.email}`)
+            fetch(`https://toy-car-land-server.vercel.app/myToys?email=${user.email}`)
                   .then(res => res.json())
-                  .then(data => setMyCars(data))
+                  .then(data => {
+                        setMyCars(data)
+                        setLoading(false)
+                  })
       }, [user])
 
       return (
             <div>
                   <SubBanner />
+                  {
+                        isLoading&&<Spinner/>
+                  }
                   <div className="overflow-x-auto my-12">
                         <table className="table w-full">
                               {/* head */}
@@ -60,7 +68,7 @@ const MyToys = () => {
                                                       <Link className="btn btn-outline" to={`/toy-details/${myCar._id}`}> View Details</Link>
                                                 </td>
                                                 <td>
-                                                      <Link to={`/updateCar/${myCar._id}`}>Edit</Link>
+                                                      <Link to={`/update-Car/${myCar._id}`}>Edit</Link>
                                                 </td>
                                                 <td>
                                                       <Link>X</Link>

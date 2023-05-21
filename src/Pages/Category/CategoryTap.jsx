@@ -1,20 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { SpinnerContext } from '../../Layouts/MainLayout/MainLayout';
+import Spinner from '../Shared/Spinner/Spinner';
 
 const ShopByCategory = () => {
-
+     const {isLoading, setLoading}= useContext(SpinnerContext)
       const [categories, setCategories] = useState([])
-
+     if(!categories)
+     {
+      return <>
+      <progress className="progress w-56"></progress>
+      <progress className="progress w-56"></progress></>
+     }
 
       useEffect(() => {
-            fetch('http://localhost:3000/categories')
+            fetch('https://toy-car-land-server.vercel.app/categories')
                   .then(res => res.json())
-                  .then(data => setCategories(data))
+                  .then(data => {
+                        setCategories(data)
+                        setLoading(false)
+                  })
       }, [])
       return (
             <Tabs>
+                  {
+                        isLoading && <Spinner/>
+                  }
                   <TabList className="flex">
                         {
                               categories.map(category => <Tab key={category._id}

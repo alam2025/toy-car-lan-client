@@ -1,0 +1,19 @@
+@keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    
+    /* Styling for the spinner */
+    .spinner {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-left-color: #1abc9c; /* Adjust the colors as desired */
+      border-radius: 50%;
+      animation: spin 1s ease-in-out infinite; /* Apply the spinning animation */
+    }

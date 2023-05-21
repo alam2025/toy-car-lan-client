@@ -2,13 +2,14 @@ import React, { useContext, useState } from 'react';
 import logo from '../../../../assets/logo.png'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../Provider/AuthProvider';
+import Spinner from '../../Spinner/Spinner';
 const TopNavigationBar = () => {
       const { user, logOut, loading } = useContext(AuthContext)
       const [isHovering, setIsHovering] = useState(false)
 
       if (loading) {
             return <div className=' flex flex-col justify-center items-center'>
-                  <progress className="progress w-56"></progress>
+                  <Spinner/>
                   
             </div>
       }

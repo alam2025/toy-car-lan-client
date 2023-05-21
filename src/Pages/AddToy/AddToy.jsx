@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Toaster, toast, useToaster } from 'react-hot-toast';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import SubBanner from '../Shared/SubBanner';
 
 const AddToy = () => {
       const toaster = useToaster();
@@ -59,6 +60,7 @@ const AddToy = () => {
 
       return (
             <div className="min-h-screen mb-4 ">
+                  <SubBanner/>
                   <div className=" ">
                         <div className="text-center lg:text-left my-8">
                               <h1 className="text-3xl font-bold">ADD A CAR!</h1>

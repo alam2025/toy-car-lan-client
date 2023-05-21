@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import SubBanner from '../Shared/SubBanner';
 import { Link, useLoaderData } from 'react-router-dom';
-import ToyDetails from '../ToyDetails/ToyDetails';
+import Spinner from '../Shared/Spinner/Spinner';
+
 
 
 const AllToys = () => {
+     
       const loadToys = useLoaderData();
       const [toys, setToys] = useState(loadToys);
+     
       const [searchTerm, setSearchTerm] = useState('');
       if (toys.length > 20) {
             const newToys = toys.slice(0, 20)
             setToys(newToys)
       }
+
+     
+     
 
 
 
@@ -33,6 +39,7 @@ const AllToys = () => {
       return (
             <div>
                   <SubBanner />
+                
                   <div>
                         <input
                               type="text"
