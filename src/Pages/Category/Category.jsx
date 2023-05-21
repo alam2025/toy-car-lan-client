@@ -6,7 +6,7 @@ import CategoryCard from './CategoryCard';
 const Category = () => {
       const [subCategoriesData, setSubcategoriesData]=useState([])
       const { name } = useParams()
-      console.log(name);
+     
 
       useEffect(() => {
             fetch(`http://localhost:3000/category-toys?subCategory=${name || 'Standard Sports Car'}`)

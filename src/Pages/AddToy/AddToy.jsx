@@ -92,12 +92,50 @@ const AddToy = () => {
                                           </label>
                                           <input type="email" placeholder="Enter Seller email" className="input input-bordered" required name='email' />
                                     </div>
-                                    <div className="form-control border-0">
+                                    {/* <div className="form-control border-0">
                                           <label className="label">
                                                 <span className="label-text text-xl font-semibold">Sub-Category</span>
                                           </label>
                                           <input type="text" placeholder="Enter Seller email" className="input input-bordered" required name='subCategory' />
+                                    </div> */}
+                                    {/* <div className="form-control w-full border-0 ">
+                                          <label className="label">
+                                                <span className="label-text text-xl font-semibold">Sub Category</span>
+                                          </label>
+                                          <select className="select select-bordered" name='subCategory' required>
+                                                <option>Star Wars</option>
+                                                <option>Harry Potter</option>
+                                                <option>Lord of the Rings</option>
+                                                <option>Planet of the Apes</option>
+                                                <option>Star Trek</option>
+                                          </select>
+                                          
+                                    </div> */}
+
+                                    <div className="form-control w-full border-0">
+                                          <label className="label">
+                                                <span className="label-text text-xl font-semibold">Sub Category</span>
+                                          </label>
+                                          <select className="select select-bordered" name='subCategory' required>
+                                                <optgroup label="Sports Car">
+                                                      <option>Standard Sports Car</option>
+                                                      <option>Supercar</option>
+                                                      <option>Hypercar</option>
+                                                </optgroup>
+                                                <optgroup label="Truck">
+                                                      <option>Dump Truck</option>
+                                                      <option>Tanker Truck</option>
+                                                      <option>Flatbed Truck</option>
+                                                </optgroup>
+                                                <optgroup label="Police Car">
+                                                      <option>Patrol Car</option>
+                                                      <option>SUVs and Trucks</option>
+                                                      <option>Pursuit Cars</option>
+                                                </optgroup>
+                                              
+                                          </select>
                                     </div>
+
                                     <div className="form-control border-0">
                                           <label className="label">
                                                 <span className="label-text text-xl font-semibold">Price</span>

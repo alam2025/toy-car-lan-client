@@ -68,10 +68,7 @@ const AllToys = () => {
 
                                                      
 
-                                                      {/* modal  */}
-                                                      <label htmlFor="my-modal-5" className="btn btn-outline">View Details</label>
-                                                      <ToyDetails key={toy._id} cars={toy}/>
-                                                      {/* modal  */}
+                                                <Link className="btn btn-outline" to={`/toy-details/${toy._id}`}> View Details</Link>
                                                 </td>
                                           </tr>)
                                     }

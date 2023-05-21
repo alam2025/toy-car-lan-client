@@ -1,39 +1,37 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
+import SubBanner from '../Shared/SubBanner';
 
-const ToyDetails = ({cars}) => {
+const ToyDetails = () => {
+      const cars= useLoaderData()
+     
+      const {pictureUrl,description,sellerEmail,price,rating,sellerName,toyName,availableQuantity}=cars;
+      
       return (
             <div>
-                  <input type="checkbox" id="my-modal-5" className="modal-toggle" />
-                  <div className="modal">
-                        <div className="modal-box w-11/12 max-w-5xl">
+                  <SubBanner/>
 
-                              <div className="flex gap-3 flex-col md:flex-row justify-center items-center ">
-                                    <figure><img src={cars.pictureUrl} alt="Movie" /></figure>
-                                    <div className="card-body">
-                                          <h2 className="card-title">{cars.toyName}</h2>
-                                          <div>
-                                                <h1 className=' text-xl font-bold'>Seller Info: </h1>
-                                                <p> {cars.sellerName}</p>
-                                                <p> {cars.sellerEmail}</p>
-                                          </div>
-                                          <div>
-                                                <h1 className=' text-xl font-bold'>Description : </h1>
-                                                <span>{cars.description}</span>
-                                          </div>
-                                          <div>
-                                                <p><span className=' text-xl font-semibold'>Quantity :</span> {cars.availableQuantity}</p>
-                                                <p><span className=' text-xl font-semibold'>Price :</span> ${cars.price}</p>
-                                                <p><span className=' text-xl font-semibold'>Rating :</span> {cars.rating}</p>
-
-                                          </div>
-
-                                    </div>
+                  <div className='flex justify-center items-center gap-4 md:flex-row flex-col border my-8 py-10 px-8 shadow-md rounded-md'>
+                        <img src={pictureUrl} alt={toyName} />
+                        <div className='flex flex-col gap-4 divide-y-2'>
+                              <h1 className=' text-2xl font-extrabold'>{toyName}</h1>
+                              <div>
+                                    <h4 className=' text-xl font-semibold'>Seller Info:</h4>
+                                    <p>{sellerName}</p>
+                                    <p>{sellerEmail}</p>
                               </div>
+                              <div>
+                                    <h4 className=' text-xl font-semibold'>Description:</h4>
+                                    <p>{description}</p>
+                              </div>
+                              <div>
 
-                              <div className="modal-action">
-                                    <label htmlFor="my-modal-5" className="btn">Ok</label>
+                                    <p><span className=' text-xl font-semibold'>Available Quantity : </span> {availableQuantity}</p>
+                                    <p><span className=' text-xl font-semibold'>Price : </span>$ {price}</p>
+                                    <p><span className=' text-xl font-semibold'>Rating : </span> {rating}</p>
                               </div>
                         </div>
+                       
                   </div>
             </div>
       );
