@@ -5,9 +5,9 @@
 ## Toy Car Land ##
  [Website Live Link ](https://toy-car-land.web.app/)
 
- [Github client side](https://github.com/programming-hero-web-course-4/b7a11-toy-marketplace-client-side-alam2025)
+ [Github client side](https://github.com/alam2025/toy-car-land-server)
 
- [Github Server side ](https://github.com/programming-hero-web-course-4/b7a11-toy-marketplace-server-side-alam2025)
+ [Github Server side ](https://github.com/alam2025/toy-car-land-server)
 
 
 
